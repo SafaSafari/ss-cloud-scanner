@@ -165,7 +165,7 @@ if not os.path.exists('ips.txt'):
 
 # ////////////////////////////////////// config
 CONFIG = []
-input_config = input('enter your config:')
+input_config = input('Enter your config (supported: vless, trojan):')
 if 'vless' in input_config or 'trojan' in config:
     parts = input_config.split('@')
     CONFIG += [parts[0] + '@', ':' + parts[1].split(':')[1]]
