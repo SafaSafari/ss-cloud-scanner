@@ -53,22 +53,3 @@
 اگر نوع ۲ انتخاب بشود در ادامه از شما uuid و دامنه و پورت و path پروکسی مورد استفادتون را درخواست میکند و به محض وارد کردنشون در 
 جای خود، عملیات اسکن شروع میشود
 
-# راه های حمایت از من
-Rial: [نکست پی](https://nextpay.org/nx/irp/safa)
-
-Btc: `bc1qgrlfzelx6dn6hym7c73jpp2w2p4hdy7lgftudr`
-
-Ltc: `ltc1ql02lg3yrtgy7xfnnl5jvgrwv2ffxkhyn54qyj0`
-
-Usdt(trc20): `TH8PcLF25uGhT4joJy7K5YQP43oYxs7ouY`
-
-Tron: `TH8PcLF25uGhT4joJy7K5YQP43oYxs7ouY`
-
-# من در شبکه های اجتماعی
-[Twitter](https://twitter.com/SafaSafari3)
-
-[Telegram](https://SafaSafari.t.me)
-
-[Youtube](https://youtube.com/@SafaSafari)
-
-[Instagram](https://instagram.com/SafaSafari.ss)
