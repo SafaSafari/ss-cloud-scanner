@@ -26,7 +26,7 @@
 در ادامه با باز کردن برنامه ترموکس، خط فرمان به شما نشان داده میشود
 به ترتیب دستورات زیر را وارد کنید
 
-`pkg -y update; pkg install -y python python-pip openssl python-cryptography`
+`pkg update -y; pkg install -y python python-pip openssl python-cryptography`
 
 در هنگام نصب، تمام پرسش ها را با `y` جواب دهید
 
