@@ -17,7 +17,7 @@ from aiohttp import ClientSession, ClientTimeout, TCPConnector
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 def ss_input(prompt, default = '', t=int):
-    result = input('{} {}:'.format(prompt, ("[" + str(default) + "] (Enter for default)") if str(default) != '' else ''))
+    result = input('{}{}: '.format(prompt, (" [" + str(default) + "] (Enter for default)") if str(default) != '' else ''))
     if result == '':
         return default
     else:

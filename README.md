@@ -26,7 +26,7 @@
 در ادامه با باز کردن برنامه ترموکس، خط فرمان به شما نشان داده میشود
 به ترتیب دستورات زیر را وارد کنید
 
-`pkg install -y git python python-pip rust openssl`
+`pkg -y update; pkg install -y git python python-pip rust openssl`
 
 `git clone https://github.com/SafaSafari/ss-cloud-scanner`
 
