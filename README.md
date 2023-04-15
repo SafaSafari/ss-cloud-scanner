@@ -26,13 +26,13 @@
 در ادامه با باز کردن برنامه ترموکس، خط فرمان به شما نشان داده میشود
 به ترتیب دستورات زیر را وارد کنید
 
-`pkg -y update; pkg install -y git python python-pip rust openssl`
+`pkg upgrade -y; pkg install -y git python python-pip rust openssl python-cryptography`
 
 `git clone https://github.com/SafaSafari/ss-cloud-scanner`
 
 `cd ss-cloud-scanner`
 
-`RUSTFLAGS=" -C lto=no" CARGO_BUILD_TARGET="$(rustc -vV | sed -n 's|host: ||p')" pip install -r ./requirements.txt`
+`pip install -r ./requirements.txt`
 
 در صورتی که پیش نیاز ها با موفقیت نصب شوند، کار تمام است و وقت آن رسیده که برنامه را [اجرا](#اجرای-برنامه) کنید
 
