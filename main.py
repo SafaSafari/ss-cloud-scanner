@@ -162,11 +162,20 @@ ssl_context.maximum_version = ssl.TLSVersion.TLSv1_2
 if not os.path.exists('ips.txt'):
     print('Please download ips.txt file')
     exit()
+
+# ////////////////////////////////////// config
+CONFIG = []
+input_config = input('enter your config:')
+if 'vless' in input_config or 'trojan' in config:
+    parts = input_config.split('@')
+    CONFIG += [parts[0] + '@', ':' + parts[1].split(':')[1]]
+# /////////////////////////////////////// values
 THREADS = 4
 TIMEOUT = 7
 COUNT = ss_input('Enter count of ip you need', 5)
 TYPE = ['speed', 'vmess'][ss_input('Enter type (1.speed, 2.vmess)', 1) - 1]
 SECURE = {'y': 's', 'n': ''}[ss_input('Secure?', 'y', str)]
+# //////////////////////////////////////
 f = open("good.txt", "w")
 cloud_ips = open('ips.txt', 'r').read().strip().split("\n")[::-1] if len(sys.argv) < 2 else sys.argv[1:]
 
@@ -227,7 +236,10 @@ async def check(ip):
             except:
                 return
     COUNT -= 1
-    f.write(ip + "\n")
+    if len(CONFIG) == 0:
+        f.write(ip + "\n")
+    else:
+        f.write(CONFIG[0] + ip + CONFIG[1] + "[%s]" % ip + "\n")
     logging.critical("find good ip: {}".format(ip))
 
 async def ping(ips):
