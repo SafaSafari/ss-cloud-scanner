@@ -26,11 +26,13 @@
 در ادامه با باز کردن برنامه ترموکس، خط فرمان به شما نشان داده میشود
 به ترتیب دستورات زیر را وارد کنید
 
-`pkg upgrade -y; pkg install -y git python python-pip rust openssl python-cryptography`
+`pkg -y update; pkg install -y python python-pip openssl python-cryptography`
 
-`git clone https://github.com/SafaSafari/ss-cloud-scanner`
+در هنگام نصب، تمام پرسش ها را با `y` جواب دهید
 
-`cd ss-cloud-scanner`
+`curl -sLo main.zip https://github.com/SafaSafari/ss-cloud-scanner/archive/refs/heads/main.zip && unzip -qq main.zip && rm main.zip`
+
+`cd ss-cloud-scanner-main`
 
 `pip install -r ./requirements.txt`
 
