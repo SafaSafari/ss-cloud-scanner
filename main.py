@@ -253,16 +253,17 @@ async def ping(ips):
     await asyncio.gather(*[check(range) for range in collect])
 
 async def main():
-    global SPEED_DOMAIN
-    print('Finding worker', end='\r')
-    for speed_urls in [open('speedtest_urls.txt', 'r') if os.path.exists('speedtest_urls.txt') else [], requests.get('https://raw.githubusercontent.com/SafaSafari/ss-cloud-scanner/main/speedtest_urls.txt').content.decode().split('\n')]:
-        SPEED_DOMAIN = await get_working_worker(speed_urls)
-        if SPEED_DOMAIN != None:
-            break
-    if SPEED_DOMAIN == None:
-        print("Worker not found")
-        exit()
-    print("Selected Worker: " + SPEED_DOMAIN)
+    if TYPE == 'speed':
+        global SPEED_DOMAIN
+        print('Finding worker', end='\r')
+        for speed_urls in [open('speedtest_urls.txt', 'r') if os.path.exists('speedtest_urls.txt') else [], requests.get('https://raw.githubusercontent.com/SafaSafari/ss-cloud-scanner/main/speedtest_urls.txt').content.decode().split('\n')]:
+            SPEED_DOMAIN = await get_working_worker(speed_urls)
+            if SPEED_DOMAIN != None:
+                break
+        if SPEED_DOMAIN == None:
+            print("Worker not found")
+            exit()
+        print("Selected Worker: " + SPEED_DOMAIN)
     format = "%(asctime)s: %(message)s"
     logging.basicConfig(
         format=format, level=logging.CRITICAL, datefmt="%H:%M:%S")
