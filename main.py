@@ -8,6 +8,7 @@ import struct
 import random
 import asyncio
 import logging
+import requests
 import binascii
 import ipaddress
 from uuid import UUID
@@ -15,6 +16,9 @@ from hashlib import md5, sha256
 from Crypto.Cipher import AES as AS
 from aiohttp import ClientSession, ClientTimeout, TCPConnector
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+
+THREADS = 4
+TIMEOUT = 7
 
 def ss_input(prompt, default = '', t=int):
     result = input('{}{}: '.format(prompt, (" [" + str(default) + "] (Enter for default)") if str(default) != '' else ''))
@@ -30,7 +34,14 @@ async def create_data(size=512 * 1024):
         created_size += 512
         yield b"S" * 512
 
-
+async def get_working_worker(speed_urls): # function name 😂😂😂
+    async with ClientSession() as session:
+        for i in speed_urls:
+            i = i.strip()
+            async with session.get("https://" + i) as r:
+                if r.status != 429:
+                    return i
+        
 class VmessSS:
     KDFSaltConstAuthIDEncryptionKey = b"AES Auth ID Encryption"
     KDFSaltConstAEADRespHeaderLenKey = b"AEAD Resp Header Len Key"
@@ -162,8 +173,7 @@ ssl_context.maximum_version = ssl.TLSVersion.TLSv1_2
 if not os.path.exists('ips.txt'):
     print('Please download ips.txt file')
     exit()
-THREADS = 4
-TIMEOUT = 7
+
 COUNT = ss_input('Enter count of ip you need', 5)
 TYPE = ['speed', 'vmess'][ss_input('Enter type (1.speed, 2.vmess)', 1) - 1]
 SECURE = {'y': 's', 'n': ''}[ss_input('Secure?', 'y', str)]
@@ -221,7 +231,7 @@ async def check(ip):
     elif TYPE == 'speed':
         async with ClientSession(connector=TCPConnector(resolver=fronting(ip)), timeout=ClientTimeout(total=TIMEOUT)) as sess:
             try:
-                async with sess.post('http{}://speedtest.safasafari.workers.dev/up'.format(SECURE), data=create_data()) as r:
+                async with sess.post('http{}://{}/up'.format(SECURE, SPEED_DOMAIN), data=create_data()) as r:
                     if await r.read() != b'ok':
                         return
             except:
@@ -232,7 +242,7 @@ async def check(ip):
 
 async def ping(ips):
     ipas = ipaddress.ip_network(ips)
-    print("{:.2f}%".format(cloud_ips.index(ips) / len(cloud_ips) * 100), end='\r')
+    print("Progress: {:.2f}%".format(cloud_ips.index(ips) / len(cloud_ips) * 100), end='\r')
     collect = []
     for ip in ipas:
         collect.append(str(ip))
@@ -243,11 +253,21 @@ async def ping(ips):
     await asyncio.gather(*[check(range) for range in collect])
 
 async def main():
+    global SPEED_DOMAIN
+    print('Finding worker', end='\r')
+    for speed_urls in [open('speedtest_urls.txt', 'r') if os.path.exists('speedtest_urls.txt') else [], requests.get('https://raw.githubusercontent.com/SafaSafari/ss-cloud-scanner/main/speedtest_urls.txt').content.decode().split('\n')]:
+        SPEED_DOMAIN = await get_working_worker(speed_urls)
+        if SPEED_DOMAIN != None:
+            break
+    if SPEED_DOMAIN == None:
+        print("Worker not found")
+        exit()
+    print("Selected Worker: " + SPEED_DOMAIN)
     format = "%(asctime)s: %(message)s"
     logging.basicConfig(
         format=format, level=logging.CRITICAL, datefmt="%H:%M:%S")
     for i in range(-(-len(cloud_ips) // THREADS)):
         await asyncio.gather(*[ping(range) for range in cloud_ips[i * THREADS:][:THREADS]])
-    logging.critical('Nice :)))')
+    # logging.critical('Nice :)))') دیگه گیر ندین بهش :))))
 
 asyncio.run(main())
