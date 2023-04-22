@@ -1,4 +1,5 @@
-# اسکنر آیپی کلادفلر (اختصاصی صفا صفری)
+# اسکنر آیپی کلادفلر
+این اسکنر آیپی های تمیز کلودفلر را در کانفیگ شما جایگذاری میکند
 
 برای این اسکنر زحمات زیادی کشیده شده است
 ساعت ها مهندسی معکوس بر روی کلاینت های مختلف انجام شده
@@ -16,7 +17,7 @@
 
 ابتدا با استفاده از دستور زیر یک کلون از پروژه بر روی سیستم خود بسازید
 
-`git clone https://github.com/SafaSafari/ss-cloud-scanner`
+`git clone https://github.com/Yasin-Dev81/cf-ip-changer.git`
 
 و یا میتوانید فایل فشرده master.zip را از قسمت code در بالای همین صفحه دانلود و اکسترکت کنید
 
@@ -38,7 +39,8 @@
 `python main.py`
 
 
-به محض اجرا، برنامه از شما تعداد آیپی مورد نیاز را درخواست میکند
+به محض اجرا، برنامه از شما درخواست کانفیگ میکند اگر اینتر بزنید فقط آیپی های اسکن شده سیو می شوند
+سپس تعداد آیپی مورد نیاز را درخواست میکند
 
 در مرحله بعد نوع اسکن مشخص میشود
 
@@ -51,22 +53,3 @@
 اگر نوع ۲ انتخاب بشود در ادامه از شما uuid و دامنه و پورت و path پروکسی مورد استفادتون را درخواست میکند و به محض وارد کردنشون در 
 جای خود، عملیات اسکن شروع میشود
 
-# راه های حمایت از من
-Rial: [نکست پی](https://nextpay.org/nx/irp/safa)
-
-Btc: `bc1qgrlfzelx6dn6hym7c73jpp2w2p4hdy7lgftudr`
-
-Ltc: `ltc1ql02lg3yrtgy7xfnnl5jvgrwv2ffxkhyn54qyj0`
-
-Usdt(trc20): `TH8PcLF25uGhT4joJy7K5YQP43oYxs7ouY`
-
-Tron: `TH8PcLF25uGhT4joJy7K5YQP43oYxs7ouY`
-
-# من در شبکه های اجتماعی
-[Twitter](https://twitter.com/SafaSafari3)
-
-[Telegram](https://SafaSafari.t.me)
-
-[Youtube](https://youtube.com/@SafaSafari)
-
-[Instagram](https://instagram.com/SafaSafari.ss)
