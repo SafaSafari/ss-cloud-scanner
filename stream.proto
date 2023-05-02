@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+message Hunk {
+  bytes data = 1;
+}
+
+service Safa {
+  rpc Tun (stream Hunk) returns (stream Hunk);
+}
