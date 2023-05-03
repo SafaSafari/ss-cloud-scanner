@@ -1,7 +1,8 @@
-import http.server
-from urllib import parse
 import http
+import http.server
 import argparse
+from urllib import parse
+
 
 class SimpleHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
@@ -22,7 +23,8 @@ class SimpleHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
         size = 0
         content = int(self.headers['Content-Length'])
         while size < content:
-            self.rfile.read(CHUNK if CHUNK < content - size else content - size)
+            self.rfile.read(CHUNK if CHUNK < content -
+                            size else content - size)
             size += CHUNK
             pass
         self.send_response(http.HTTPStatus.OK)
@@ -42,8 +44,7 @@ def serve_forever():
         bind='0.0.0.0',
     )
 
-
-def main():
+if __name__ == '__main__':
     global args
     parser = argparse.ArgumentParser()
     parser.add_argument('port', type=int, default=80, nargs='?',
@@ -51,6 +52,3 @@ def main():
 
     args = parser.parse_args()
     serve_forever()
-
-
-main()
