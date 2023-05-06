@@ -5,8 +5,11 @@
 
 
 # مهم
-## در حال حاضر، اسکنر روی اپراتور های ایرانسل و همراه اول با اشکالاتی رو به رو هست، در حال بررسی و رفع مشکل هستم
-
+## در حال حاضر، اسکنر روی اپراتور های ایرانسل و ~~همراه اول~~ با اشکالاتی رو به رو هست، در حال بررسی و رفع مشکل هستم
+---
+## اپراتور ایرانسل به کلی تمام آیپی های کلادفلر رو محدود کرده
+---
+## همراه اول با حالت personal server بهترین عملکرد را دارد
 ---
 ## راهنما
 * [نصب](#نصب)
@@ -33,15 +36,15 @@
 در ادامه با باز کردن برنامه ترموکس، خط فرمان به شما نشان داده میشود
 به ترتیب دستورات زیر را وارد کنید
 
-`pkg update -y; pkg install -y python python-pip openssl python-cryptography`
+>`pkg update -y; pkg install -y python python-pip openssl python-cryptography`
 
 در هنگام نصب، تمام پرسش ها را با `y` جواب دهید
 
-`curl -sLo main.zip https://github.com/SafaSafari/ss-cloud-scanner/archive/refs/heads/main.zip && unzip -qq main.zip && rm main.zip`
-
-`cd ss-cloud-scanner-main`
-
-`pip install -r ./requirements.txt`
+>`curl -sLo main.zip https://github.com/SafaSafari/ss-cloud-scanner/archive/refs/heads/main.zip && unzip -qq main.zip && rm main.zip`
+>
+>`cd ss-cloud-scanner-main`
+>
+>`pip install -r ./requirements.txt`
 
 در صورتی که پیش نیاز ها با موفقیت نصب شوند، کار تمام است و وقت آن رسیده که برنامه را [اجرا](#اجرای-برنامه) کنید
 
@@ -58,7 +61,7 @@
 
 اکنون وقت آن رسیده یک ترمینال (cmd) در مسیر اکسترکت پروژه اجرا کنید و برای نصب پیش نیاز ها دستور زیر را اجرا کنید
 
-`pip install -r ./requirements.txt`
+>`pip install -r ./requirements.txt`
 
 در صورتی که پیش نیاز ها با موفقیت نصب شوند، کار تمام است و وقت آن رسیده که برنامه را [اجرا](#اجرای-برنامه) کنید
 
@@ -70,7 +73,7 @@
 # اجرای برنامه
 با دستور زیر، عملکرد برنامه آغاز میشود
 
-`python main.py`
+>`python main.py`
 
 به محض اجرا، برنامه از شما تعداد آیپی مورد نیاز را درخواست میکند
 

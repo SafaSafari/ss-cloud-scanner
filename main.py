@@ -120,9 +120,9 @@ class VlessSS:
             yield d
     
     async def read_packets_grpc(self, recv):
-        yield (await self.get_headers(await recv.asend(None)))[2]
+        yield (await self.get_headers((await recv.asend(None)).data))[2]
         async for p in recv:
-            yield p
+            yield p.data
 
     async def send_headers(self, addr, port) -> bytes:
         addr_type = 2
@@ -156,11 +156,14 @@ class VlessSS:
         return version, info_p, data
 
     def parse_link(link: str):
+        link = link.strip()
         if not link.startswith('vless://'):
             return None
         link_parse = parse.urlparse(link)
         params = {k: v[0] for k, v in parse.parse_qs(link_parse.query).items()}
-        return link_parse.username, params['host'], link_parse.port, params['path'], ['s', params.get('sni', params['host'])] if params.get('security') and params['security'] == 'tls' else ['', params['host']], params['type']
+        if not params.get('host'):
+            params['host'] = link_parse.hostname
+        return link_parse.username, params['host'], link_parse.port, params['path' if params['type'] == 'ws' else 'serviceName'], ['s', params.get('sni', params['host'])] if params.get('security') and params['security'] == 'tls' else ['', params['host']], params['type']
 
 
 class VmessSS:
@@ -283,6 +286,7 @@ class VmessSS:
         return rv
 
     def parse_link(link):
+        link = link.strip()
         if not link.startswith('vmess://'):
             return None
         link = link[len('vmess://'):]
@@ -329,7 +333,8 @@ if TYPE in ['vmess', 'vless']:
     SECURE, DOMAIN = SECURE        
     if NETWORK == 'grpc':
         HOST = DOMAIN
-        DOMAIN = ss_input('You have grpc config, on this config you can select a sni to use domain fronting', DOMAIN, str)
+        if SECURE == 's':
+            DOMAIN = ss_input('You have grpc config, on this config you can select a sni to use domain fronting', DOMAIN, str)
 else:
     if TYPE == 'server':
         SPEED_DOMAIN = ss_input(
