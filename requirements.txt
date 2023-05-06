@@ -1,4 +1,7 @@
+grpcio
 aiohttp
+grpclib
+protobuf
 cryptography
 pycryptodome
 requests
