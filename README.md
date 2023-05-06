@@ -36,15 +36,19 @@
 در ادامه با باز کردن برنامه ترموکس، خط فرمان به شما نشان داده میشود
 به ترتیب دستورات زیر را وارد کنید
 
->`pkg update -y; pkg install -y python python-pip openssl python-cryptography`
+```bash
+pkg update -y; pkg install -y python python-pip openssl python-cryptography
+```
 
 در هنگام نصب، تمام پرسش ها را با `y` جواب دهید
 
->`curl -sLo main.zip https://github.com/SafaSafari/ss-cloud-scanner/archive/refs/heads/main.zip && unzip -qq main.zip && rm main.zip`
->
->`cd ss-cloud-scanner-main`
->
->`pip install -r ./requirements.txt`
+```bash
+curl -sLo main.zip https://github.com/SafaSafari/ss-cloud-scanner/archive/refs/heads/main.zip && unzip -qq main.zip && rm main.zip`
+
+cd ss-cloud-scanner-main
+
+pip install -r ./requirements.txt
+```
 
 در صورتی که پیش نیاز ها با موفقیت نصب شوند، کار تمام است و وقت آن رسیده که برنامه را [اجرا](#اجرای-برنامه) کنید
 
@@ -61,7 +65,9 @@
 
 اکنون وقت آن رسیده یک ترمینال (cmd) در مسیر اکسترکت پروژه اجرا کنید و برای نصب پیش نیاز ها دستور زیر را اجرا کنید
 
->`pip install -r ./requirements.txt`
+```bash
+pip install -r ./requirements.txt
+```
 
 در صورتی که پیش نیاز ها با موفقیت نصب شوند، کار تمام است و وقت آن رسیده که برنامه را [اجرا](#اجرای-برنامه) کنید
 
@@ -73,7 +79,9 @@
 # اجرای برنامه
 با دستور زیر، عملکرد برنامه آغاز میشود
 
->`python main.py`
+```bash
+python main.py
+```
 
 به محض اجرا، برنامه از شما تعداد آیپی مورد نیاز را درخواست میکند
 
