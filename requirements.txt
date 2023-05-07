@@ -1,4 +1,3 @@
-grpcio
 aiohttp
 grpclib
 protobuf
